@@ -7,14 +7,14 @@ import (
 	"github.com/kaznishi/clean-arch-golang/domain/model"
 )
 
-type articleUsecase struct {
+type ArticleUsecase struct {
 	articleRepository repository.ArticleRepository
 	authorRepository repository.AuthorRepository
 	contextTimeout time.Duration
 }
 
-func NewArticleUsecase(arRepo repository.ArticleRepository, auRepo repository.AuthorRepository, timeout time.Duration) articleUsecase {
-	return articleUsecase{
+func NewArticleUsecase(arRepo repository.ArticleRepository, auRepo repository.AuthorRepository, timeout time.Duration) ArticleUsecase {
+	return ArticleUsecase{
 		articleRepository: arRepo,
 		authorRepository: auRepo,
 		contextTimeout: timeout,

@@ -1,10 +1,10 @@
 package main
 
 import (
+	"os"
 	"net/http"
 
 	"github.com/go-http-utils/logger"
-	"os"
 )
 
 func main() {

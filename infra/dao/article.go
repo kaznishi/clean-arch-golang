@@ -3,8 +3,9 @@ package dao
 import (
 	"database/sql"
 	"context"
-	"github.com/kaznishi/clean-arch-golang/domain/model"
 	"fmt"
+
+	"github.com/kaznishi/clean-arch-golang/domain/model"
 	"github.com/kaznishi/clean-arch-golang/domain/repository"
 )
 

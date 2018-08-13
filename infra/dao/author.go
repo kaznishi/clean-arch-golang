@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/kaznishi/clean-arch-golang/domain/repository"
 	"github.com/kaznishi/clean-arch-golang/domain/model"
+	"github.com/kaznishi/clean-arch-golang/domain/repository"
 )
 
 type authorDAO struct {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"os"
 	"net/http"
+	"os"
 
 	"github.com/go-http-utils/logger"
 )

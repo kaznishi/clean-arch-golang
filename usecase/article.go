@@ -2,11 +2,11 @@ package usecase
 
 import (
 	"time"
+	"context"
+	"strconv"
 
 	"github.com/kaznishi/clean-arch-golang/domain/repository"
 	"github.com/kaznishi/clean-arch-golang/domain/model"
-	"context"
-	"strconv"
 )
 
 type ArticleUsecase struct {
@@ -105,8 +105,70 @@ func (a *ArticleUsecase) Fetch(c context.Context, cursor string, num int64) ([]*
 	return listArticle, nextCursor, nil
 }
 
+func (a *ArticleUsecase) GetByID(c context.Context, id int64) (*model.Article, error) {
+	ctx, cancel := context.WithTimeout(c, a.contextTimeout)
+	defer cancel()
 
+	res, err := a.articleRepository.GetByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
 
+	resAuthor, err := a.authorRepository.GetByID(ctx, res.Author.ID)
+	if err != nil {
+		return nil, err
+	}
+	res.Author = *resAuthor
+	return res, nil
+}
 
+func (a *ArticleUsecase) Update(c context.Context, ar *model.Article) (*model.Article, error) {
+	ctx, cancel := context.WithTimeout(c, a.contextTimeout)
+	defer cancel()
 
+	ar.UpdatedAt = time.Now()
+	return a.articleRepository.Update(ctx, ar)
+}
 
+func (a *ArticleUsecase) GetByTitle(c context.Context, title string) (*model.Article, error) {
+	ctx, cancel := context.WithTimeout(c, a.contextTimeout)
+	defer cancel()
+	res, err := a.articleRepository.GetByTitle(ctx, title)
+	if err != nil {
+		return nil, err
+	}
+
+	resAuthor, err := a.authorRepository.GetByID(ctx, res.Author.ID)
+	if err != nil {
+		return nil, err
+	}
+	res.Author = *resAuthor
+
+	return res, nil
+}
+
+func (a *ArticleUsecase) Store(c context.Context, ar *model.Article) (*model.Article, error) {
+	ctx, cancel := context.WithTimeout(c, a.contextTimeout)
+	defer cancel()
+	existArticle, _ := a.GetByTitle(ctx, ar.Title)
+	if existArticle != nil {
+		return nil, model.CONFLICT_ERROR
+	}
+
+	id, err := a.articleRepository.Store(ctx, ar)
+	if err != nil {
+		return nil, err
+	}
+	ar.ID = id
+	return ar, nil
+}
+
+func (a *ArticleUsecase) Delete(c context.Context, id int64) (bool, error) {
+	ctx, cancel := context.WithTimeout(c, a.contextTimeout)
+	defer cancel()
+	existArticle, _ := a.articleRepository.GetByID(ctx, id)
+	if existArticle == nil {
+		return false, model.NOT_FOUND_ERROR
+	}
+	return a.articleRepository.Delete(ctx, id)
+}

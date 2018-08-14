@@ -117,7 +117,7 @@ func getStatusCode(err error) int {
 
 func NewArticleHandler(e *echo.Echo, uc usecase.ArticleUsecase) {
 	handler := &ArticleHandler{
-		ArticleUsecase: uc
+		ArticleUsecase: uc,
 	}
 
 	e.GET("/article", handler.FetchArticle)

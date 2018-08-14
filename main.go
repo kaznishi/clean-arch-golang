@@ -13,6 +13,7 @@ import (
 	"github.com/kaznishi/clean-arch-golang/usecase"
 	"github.com/kaznishi/clean-arch-golang/adapter/handler"
 	"github.com/spf13/viper"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func init() {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/spf13/viper"
 	"fmt"
 	"net/url"
 	"database/sql"
@@ -13,6 +12,7 @@ import (
 	"github.com/kaznishi/clean-arch-golang/infra/dao"
 	"github.com/kaznishi/clean-arch-golang/usecase"
 	"github.com/kaznishi/clean-arch-golang/adapter/handler"
+	"github.com/spf13/viper"
 )
 
 func init() {

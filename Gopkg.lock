@@ -9,9 +9,110 @@
   pruneopts = "UT"
   revision = "f3a42dcdeae6e445c9e986b7fda289d98db10414"
 
+[[projects]]
+  digest = "1:27624bba723a2ffb12ce7b004b9ada9e9f642951aad1e9947bf4b6f65ee3e8e6"
+  name = "github.com/go-playground/locales"
+  packages = [
+    ".",
+    "currency",
+  ]
+  pruneopts = "UT"
+  revision = "f63010822830b6fe52288ee52d5a1151088ce039"
+  version = "v0.12.1"
+
+[[projects]]
+  digest = "1:e022cf244bcac1b6ef933f1a2e0adcf6a6dfd7b872d8d41e4d4179bb09a87cbc"
+  name = "github.com/go-playground/universal-translator"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "b32fa301c9fe55953584134cb6853a13c87ec0a1"
+  version = "v0.16.0"
+
+[[projects]]
+  digest = "1:26971a24734a1b911111711f981ffc7463361b36483456f33da623570b7d214c"
+  name = "github.com/labstack/echo"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "6d227dfea4d2e52cb76856120b3c17f758139b4e"
+  version = "3.3.5"
+
+[[projects]]
+  digest = "1:ee674994a468c0d0698bcf5c51853586d88d9567fc7e9fc31bf926ef716e8bcf"
+  name = "github.com/labstack/gommon"
+  packages = [
+    "color",
+    "log",
+  ]
+  pruneopts = "UT"
+  revision = "d6898124de917583f5ff5592ef931d1dfe0ddc05"
+  version = "0.2.6"
+
+[[projects]]
+  digest = "1:c658e84ad3916da105a761660dcaeb01e63416c8ec7bc62256a9b411a05fcd67"
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
+  version = "v0.0.9"
+
+[[projects]]
+  digest = "1:d4d17353dbd05cb52a2a52b7fe1771883b682806f68db442b436294926bbfafb"
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
+  version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  digest = "1:c468422f334a6b46a19448ad59aaffdfc0a36b08fdcc1c749a0b29b6453d7e59"
+  name = "github.com/valyala/bytebufferpool"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7"
+
+[[projects]]
+  branch = "master"
+  digest = "1:268b8bce0064e8c057d7b913605459f9a26dcab864c0886a56d196540fbf003f"
+  name = "github.com/valyala/fasttemplate"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "dcecefd839c4193db0d35b88ec65b4c12d360ab0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:78bfb3157dda7bde85fad7f812af19f17230be7aa2352f1f5bf81503bcfd5208"
+  name = "golang.org/x/crypto"
+  packages = [
+    "acme",
+    "acme/autocert",
+  ]
+  pruneopts = "UT"
+  revision = "de0752318171da717af4ce24d0a2e8626afaeb11"
+
+[[projects]]
+  branch = "master"
+  digest = "1:0316a8ad208917f1d141b077e278980fd5e4594f3a85f835dacbf24d85798252"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  pruneopts = "UT"
+  revision = "4e1fef5609515ec7a2cee7b5de30ba6d9b438cbf"
+
+[[projects]]
+  digest = "1:e2f64cca6e235f32cd4c2f9be9ae0cda1f8608fc6fdb68936e8d10e4e0bb074d"
+  name = "gopkg.in/go-playground/validator.v9"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e69e9a28bb62b977fdc58d051f1bb477b7cbe486"
+  version = "v9.21.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/go-http-utils/logger"]
+  input-imports = [
+    "github.com/go-http-utils/logger",
+    "github.com/labstack/echo",
+    "gopkg.in/go-playground/validator.v9",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

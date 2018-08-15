@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.6
+    ports:
+      - "13306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admpass
+      - MYSQL_DATABASE=defaultdb
+      - MYSQL_USER=defaultuser
+      - MYSQL_PASSWORD=defaultpass
+    volumes:
+      - db-volume:/var/lib/mysql
+
+volumes:
+  db-volume:

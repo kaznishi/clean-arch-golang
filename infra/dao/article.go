@@ -18,7 +18,7 @@ func NewArticleDAO(DB *sql.DB) repository.ArticleRepository {
 }
 
 func (dao *articleDAO) fetch(ctx context.Context, query string, args ...interface{}) ([]*model.Article, error) {
-	rows, err := dao.DB.QueryContext(ctx, query, args)
+	rows, err := dao.DB.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
 	}

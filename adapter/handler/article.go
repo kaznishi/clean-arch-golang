@@ -5,7 +5,7 @@ import (
 	"context"
 	"net/http"
 
-	validator "gopkg.in/go-playground/validator.v9"
+	"gopkg.in/go-playground/validator.v9"
 	"github.com/kaznishi/clean-arch-golang/usecase"
 	"github.com/labstack/echo"
 	"github.com/kaznishi/clean-arch-golang/domain/model"
@@ -122,6 +122,6 @@ func NewArticleHandler(e *echo.Echo, uc usecase.ArticleUsecase) {
 
 	e.GET("/article", handler.FetchArticle)
 	e.POST("/article", handler.Store)
-	e.GET("/article", handler.GetByID)
+	e.GET("/article/:id", handler.GetByID)
 	e.DELETE("/article/:id", handler.Delete)
 }

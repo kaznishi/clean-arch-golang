@@ -52,7 +52,7 @@ func main() {
 	e := echo.New()
 	authorRepository := dao.NewAuthorDAO(dbConn)
 	articleRepository := dao.NewArticleDAO(dbConn)
-	timeoutContext := time.Duration(viper.GetInt("context.timetout")) * time.Second
+	timeoutContext := time.Duration(viper.GetInt("context.timeout")) * time.Second
 	articleUsecase := usecase.NewArticleUsecase(articleRepository, authorRepository, timeoutContext)
 	handler.NewArticleHandler(e, articleUsecase)
 

@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"github.com/labstack/echo"
-	"github.com/kaznishi/clean-arch-golang/infra/dao"
 	"github.com/kaznishi/clean-arch-golang/usecase"
 	"github.com/kaznishi/clean-arch-golang/adapter/handler"
 	"github.com/spf13/viper"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/kaznishi/clean-arch-golang/adapter/registry"
 )
 
 func init() {
@@ -49,11 +49,11 @@ func main() {
 	}
 
 	defer dbConn.Close()
-	e := echo.New()
-	authorRepository := dao.NewAuthorDAO(dbConn)
-	articleRepository := dao.NewArticleDAO(dbConn)
+	repo := registry.NewRepository(dbConn)
 	timeoutContext := time.Duration(viper.GetInt("context.timeout")) * time.Second
-	articleUsecase := usecase.NewArticleUsecase(articleRepository, authorRepository, timeoutContext)
+	e := echo.New()
+
+	articleUsecase := usecase.NewArticleUsecase(repo, timeoutContext)
 	handler.NewArticleHandler(e, articleUsecase)
 
 	e.Start(viper.GetString("server.address"))

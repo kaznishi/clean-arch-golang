@@ -7,6 +7,7 @@ import (
 
 	"github.com/kaznishi/clean-arch-golang/domain/repository"
 	"github.com/kaznishi/clean-arch-golang/domain/model"
+	"github.com/kaznishi/clean-arch-golang/adapter/registry"
 )
 
 type ArticleUsecase struct {
@@ -15,10 +16,10 @@ type ArticleUsecase struct {
 	contextTimeout time.Duration
 }
 
-func NewArticleUsecase(arRepo repository.ArticleRepository, auRepo repository.AuthorRepository, timeout time.Duration) ArticleUsecase {
+func NewArticleUsecase(repo registry.Repository, timeout time.Duration) ArticleUsecase {
 	return ArticleUsecase{
-		articleRepository: arRepo,
-		authorRepository: auRepo,
+		articleRepository: repo.NewArticleRepository(),
+		authorRepository: repo.NewAuthorRepository(),
 		contextTimeout: timeout,
 	}
 }
